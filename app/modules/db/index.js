@@ -1,13 +1,17 @@
 var dbConfig = require("../../config/db");
 
 module.exports.getDbConnectionStr = function() {
+  var env = process.env.NODE_ENV || "development"
   return (
     "mongodb://" +
-    dbConfig.development.username +
+    dbConfig[env].username +
     ":" +
-    dbConfig.development.password +
+    dbConfig[env].password +
     "@" +
-    dbConfig.development.host +
-    ":" + dbConfig.development.port +"/" + dbConfig.development.database
+    dbConfig[env].host +
+    ":" +
+    dbConfig[env].port +
+    "/" +
+    dbConfig[env].database
   );
 };
