@@ -4,11 +4,15 @@ var express = require("express"),
   bodyParser = require("body-parser"),
   mongoose = require('mongoose'),
   winston = require('winston'),
-  glob = require('glob');
+  glob = require('glob'),
+  cors = require('cors');
 
 var db = require("./app/modules/db")
 
 mongoose.Promise = global.Promise;
+
+//Allow Cross Domain Request
+app.use(cors())
 
 //Using Body Parser
 app.use(bodyParser.urlencoded({ extended: true }));
