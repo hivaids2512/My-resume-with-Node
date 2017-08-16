@@ -1,7 +1,7 @@
 "use strict";
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-
+var SectionModel = require("../section/section.model")
 var ResumeSchema = new Schema({
   name: {
     type: String,
@@ -21,7 +21,8 @@ var ResumeSchema = new Schema({
   status: {
     type: String,
     default: "PRIVATE"
-  }
+  }, 
+  sections : [{ type: Schema.Types.ObjectId, ref: SectionModel.schema }]
 });
 
 module.exports = mongoose.model("Resume", ResumeSchema);
