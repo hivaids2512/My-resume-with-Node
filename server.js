@@ -6,7 +6,8 @@ var express = require("express"),
   winston = require('winston'),
   glob = require('glob'),
   cors = require('cors'),
-  morgan = require('morgan'); 
+  morgan = require('morgan'),
+  passport = require('passport');
 
 var db = require("./app/modules/db")
 
@@ -22,6 +23,10 @@ app.use(bodyParser.json());
 // Log requests to console
 app.use(morgan('dev'));  
 
+//Allow Passport
+app.use(passport.initialize());
+require('./app/config/passport')(passport);
+//Init Routes
 var routes = glob.sync(__dirname + '/app/modules/*/*.route.js')
 routes.forEach(function (route) {
   var router = express.Router();

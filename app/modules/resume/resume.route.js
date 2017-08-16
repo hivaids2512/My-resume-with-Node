@@ -1,14 +1,30 @@
 "use strict";
+var passport = require("passport");
 module.exports = function(router) {
   var resumeController = require("./resume.controller");
   router
     .route("/resumes")
-    .get(resumeController.getResumeList)
-    .post(resumeController.createResume);
+    .get(
+      passport.authenticate("jwt", { session: false }),
+      resumeController.getResumeList
+    )
+    .post(
+      passport.authenticate("jwt", { session: false }),
+      resumeController.createResume
+    );
 
   router
     .route("/resumes/:resumeId")
-    .get(resumeController.getResumeById)
-    .put(resumeController.updateResume)
-    .delete(resumeController.removeResume);
+    .get(
+      passport.authenticate("jwt", { session: false }),
+      resumeController.getResumeById
+    )
+    .put(
+      passport.authenticate("jwt", { session: false }),
+      resumeController.updateResume
+    )
+    .delete(
+      passport.authenticate("jwt", { session: false }),
+      resumeController.removeResume
+    );
 };
