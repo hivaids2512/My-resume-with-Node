@@ -5,7 +5,8 @@ var express = require("express"),
   mongoose = require('mongoose'),
   winston = require('winston'),
   glob = require('glob'),
-  cors = require('cors');
+  cors = require('cors'),
+  morgan = require('morgan'); 
 
 var db = require("./app/modules/db")
 
@@ -17,6 +18,9 @@ app.use(cors())
 //Using Body Parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// Log requests to console
+app.use(morgan('dev'));  
 
 var routes = glob.sync(__dirname + '/app/modules/*/*.route.js')
 routes.forEach(function (route) {
