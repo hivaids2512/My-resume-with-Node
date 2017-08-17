@@ -4,8 +4,8 @@
   "description": "A simple server for my resume app",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "NODE_ENV=development nodemon server.js",
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -27,10 +27,12 @@
     "express": "^4.15.4",
     "glob": "^7.1.2",
     "jsonwebtoken": "^7.4.2",
+    "mocha": "^3.5.0",
     "mongoose": "^4.11.7",
     "morgan": "^1.8.2",
     "passport": "^0.4.0",
     "passport-jwt": "^2.1.0",
+    "request": "^2.81.0",
     "winston": "^2.3.1"
   }
 }
