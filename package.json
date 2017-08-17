@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "NODE_ENV=development nodemon server.js",
-    "test": "NODE_ENV=test ./node_modules/.bin/mocha --reporter spec"
+    "test": "NODE_ENV=test mocha --recursive --timeout 10000"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   "dependencies": {
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
+    "chai": "^4.1.1",
     "cors": "^2.8.4",
     "express": "^4.15.4",
     "glob": "^7.1.2",
