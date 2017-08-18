@@ -1,6 +1,7 @@
-var dbConfig = require("../../config/db");
+var dbConfig = require("./db");
+var domain = require("./domain");
 
-module.exports.getDbConnectionStr = function() {
+exports.getDbConnectionStr = function() {
   var env = process.env.NODE_ENV || "development"
   return (
     "mongodb://" +
@@ -13,5 +14,12 @@ module.exports.getDbConnectionStr = function() {
     dbConfig[env].port +
     "/" +
     dbConfig[env].database
+  );
+};
+
+exports.getEndPoint = function() {
+  var env = process.env.NODE_ENV || "development"
+  return (
+    domain[env]
   );
 };

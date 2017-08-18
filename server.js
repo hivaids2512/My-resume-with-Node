@@ -9,7 +9,7 @@ var express = require("express"),
   morgan = require('morgan'),
   passport = require('passport');
 
-var db = require("./app/modules/db")
+var config = require("./app/config")
 
 mongoose.Promise = global.Promise;
 
@@ -35,7 +35,7 @@ routes.forEach(function (route) {
   app.use('/api', router);
 })
 
-mongoose.connect(db.getDbConnectionStr(), {useMongoClient: true}).then(
+mongoose.connect(config.getDbConnectionStr(), {useMongoClient: true}).then(
   () => {
     app.listen(port);
     winston.log('info', "Server started on: " + port);

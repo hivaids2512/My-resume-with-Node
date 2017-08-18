@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "NODE_ENV=development nodemon server.js",
-    "test": "NODE_ENV=test mocha --recursive --timeout 10000"
+    "test": "NODE_ENV=test mocha --recursive --timeout 15000000"
   },
   "repository": {
     "type": "git",
