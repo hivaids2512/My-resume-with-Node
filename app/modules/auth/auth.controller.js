@@ -18,9 +18,10 @@ exports.signIn = function(req, res) {
           if (isMatch && !err) {
             // if user is found and password is right create a token
             var token = jwt.sign(user, "secret", {
-              expiresIn: 10080 // in seconds
+              expiresIn: "100h"
             });
-            res.json({ success: true, token: "JWT " + token });
+            user.password = undefined
+            res.json({ success: true, token: "JWT " + token, data: user });
           } else {
             res.send({
               success: false,
