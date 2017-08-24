@@ -27,4 +27,15 @@ module.exports = function(router) {
       passport.authenticate("jwt", { session: false }),
       resumeController.removeResume
     );
+
+  router
+    .route("/resumes/public/:resumeId")
+    .get(
+      passport.authenticate("jwt", { session: false }),
+      resumeController.getPublicResume
+    )
+    .put(
+      passport.authenticate("jwt", { session: false }),
+      resumeController.publicResume
+    );
 };
