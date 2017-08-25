@@ -62,11 +62,13 @@ exports.publicResume = function(req, res) {
 
 exports.getPublicResume = function(req, res) {
   Resume.findOne({ _id: req.params.resumeId, status: "PUBLIC" })
+    .populate('sections')
+    .exec()
     .then(resume => {
       if (resume) {
-        res.json(resume)
+        res.json(resume);
       } else {
-        res.status(404).send("Not found")
+        res.status(404).send("Not found");
       }
     })
     .catch(err => {

@@ -22,7 +22,7 @@ var ResumeSchema = new Schema({
     type: String,
     default: "PRIVATE"
   }, 
-  sections : [{ type: Schema.Types.ObjectId, ref: SectionModel.schema }]
+  sections : [{ type: Schema.Types.ObjectId, ref: 'Section' }]
 });
 
 module.exports = mongoose.model("Resume", ResumeSchema);
